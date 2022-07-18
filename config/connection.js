@@ -1,12 +1,12 @@
-const { connect, connection } = require('mongoose');
+const URI = process.env.MONGODB_URL;
 
+mongoose.connect(URI, {
 
-connect('mongodb://localhost/social-network-api', {
-    userNewUrlParser: true,
-    useUnifiedTopology: true,
-    // unifiedtopology : DeprecationWarning: current Server Discovery and Monitoring engine is deprecated, and will be removed in a future version. To use the new Server Discover and Monitoring engine, pass option { useUnifiedTopology: true } to the MongoClient constructor.
+useNewUrlParser: true, 
 
-    // usenewurlparser : DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+useUnifiedTopology: true 
+
+}, err => {
+if(err) throw err;
+console.log('Connected to MongoDB!!!')
 });
-
-module.exports = connection;
