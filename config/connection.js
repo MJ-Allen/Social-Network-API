@@ -1,12 +1,8 @@
-const URI = process.env.MONGODB_URL;
+const { connect, connection } = require('mongoose');
 
-mongoose.connect(URI, {
-
-useNewUrlParser: true, 
-
-useUnifiedTopology: true 
-
-}, err => {
-if(err) throw err;
-console.log('Connected to MongoDB!!!')
+connect('mongodb://localhost/videosAndResponses', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
+
+module.exports = connection;
