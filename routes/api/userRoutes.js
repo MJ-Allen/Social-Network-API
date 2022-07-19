@@ -6,7 +6,9 @@ const {
     createUser,
     updateUser,
     deleteUser,
-} = require('../controllers/userController');
+    addFriend,
+    deleteFriend,
+} = require('../../controllers/userController');
 
 
 router.route('/')

@@ -4,16 +4,31 @@ const {Schema, model} = require('mongoose');
 
 const userSchema = new Schema(
     {
-      first: String,
-      last: String,
-      age: Number,
-      videos: [
+      username: { String,
+      unique: true,
+      required: true,
+      trim: true
+    },
+    email: {
+      type: String, 
+      unique: true,
+      required: true,
+      match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]
+    },
+      thoughts: [
         {
           type: Schema.Types.ObjectId,
-          ref: 'Thought',
+          ref: 'thought',
+        },
+      ],
+      friends: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: 'user',
         },
       ],
     },
+  
     {
         toJSON: {
             virtuals: true,
