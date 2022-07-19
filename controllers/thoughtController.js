@@ -1,6 +1,6 @@
-const { Video, User } = require('../models');
+const { Thought, User } = require('../models');
 
-module.exports = {
+const thoughtController = {
   getThoughts(req, res) {
     Thought.find()
       .then((thoughts) => res.json(thoughts))
@@ -15,7 +15,7 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
-  // create a new video
+  // create thought
   createThought(req, res) {
     Thought.create(req.body)
       .then((thought) => {
@@ -73,7 +73,7 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
-  // Add a video response
+  // Add a reaction
   addReaction(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
@@ -87,7 +87,7 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
-  // Remove video response
+  // delete reaction 
   deleteReaction(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.videoId },
@@ -102,3 +102,4 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
 };
+module.exports = thoughtController;

@@ -4,7 +4,8 @@ const {Schema, model} = require('mongoose');
 
 const userSchema = new Schema(
     {
-      username: { String,
+      username: { 
+      type: String,
       unique: true,
       required: true,
       trim: true
@@ -13,18 +14,19 @@ const userSchema = new Schema(
       type: String, 
       unique: true,
       required: true,
-      match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]
+      match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/] 
+      // assistance from classmate on the email regex
     },
       thoughts: [
         {
           type: Schema.Types.ObjectId,
-          ref: 'thought',
+          ref: 'Thought',
         },
       ],
       friends: [
         {
           type: Schema.Types.ObjectId,
-          ref: 'user',
+          ref: 'User',
         },
       ],
     },
@@ -38,20 +40,14 @@ const userSchema = new Schema(
       );
 
       userSchema
-      .virtual('fullName')
+      .virtual('friendsCount')
       // Getter
       .get(function () {
-        return `${this.first} ${this.last}`;
+        return this.friends.length;
       })
-      // Setter to set the first and last name
-      .set(function (v) {
-        const first = v.split(' ')[0];
-        const last = v.split(' ')[1];
-        this.set({ first, last });
-      });
     
     // Initialize our User model
-    const User = model('user', userSchema);
+    const User = model('User', userSchema);
     
    
     
