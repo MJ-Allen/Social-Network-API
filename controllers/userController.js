@@ -2,7 +2,7 @@ const {User} = require('../models');
 
 const userController = {
   getUsers(req, res) {
-    User.findOne()
+    User.find()
       .then((users) => res.json(users))
       .catch((err) => res.status(500).json(err));
   },
@@ -23,7 +23,7 @@ const userController = {
       .catch((err) => res.status(500).json(err));
   },
   updateUser(req, res) {
-    User.update(req.body)
+    User.findOneAndUpdate(req.body)
       .then((dbUserData) => res.json(dbUserData))
       .catch((err) => res.status(500).json(err));
   },
@@ -33,7 +33,7 @@ const userController = {
       .catch((err) => res.status(500).json(err));
   },
 
-  addFriend( req, res) {
+  addFriend( {params}, res) {
     User.findOneAndUpdate(
       {_id: params.id}, {$addToSet: {friends: params.friendsId} },
       {new: true}
@@ -48,7 +48,7 @@ const userController = {
     .catch((err) => res.json(err));
   
   },
-  deleteFriend( req, res) {
+  deleteFriend( {params}, res) {
     User.findOneAndUpdate(
       { _id: params.id },
       { $addToSet: { friends: params.friendsId } },
