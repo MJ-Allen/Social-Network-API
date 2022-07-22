@@ -1,11 +1,12 @@
 const { Schema, model } = require('mongoose');
-
+const moment = require('moment');  
+// brought in moment to generate date and time
 const reactionSchema = new Schema({
   reactionId: {
     type: Schema.Types.ObjectId,
     default: () => new Types.ObjectId()
   },
-  reactionBody: {
+    reactionBody: {
     type: String,
     required: true,
     maxLength: 280
@@ -29,7 +30,7 @@ const reactionSchema = new Schema({
 
 // Schema for what makes up a thought
 const thoughtSchema = new Schema({
-  thoughttext:{
+  thoughtText:{
     type: String,
     required: true,
     minlength: 1,

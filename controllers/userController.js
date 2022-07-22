@@ -28,8 +28,8 @@ const userController = {
       .catch((err) => res.status(500).json(err));
   },
   deleteUser(req, res) {
-    User.deleteOne(req.body)
-      .then((dbUserData) => res.json(dbUserData))
+    User.deleteOne({_id: req.params.userId})
+          .then((dbUserData) => res.json(dbUserData))
       .catch((err) => res.status(500).json(err));
   },
 

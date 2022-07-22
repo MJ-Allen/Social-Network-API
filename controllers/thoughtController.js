@@ -90,7 +90,7 @@ const thoughtController = {
   // delete reaction 
   deleteReaction(req, res) {
     Thought.findOneAndUpdate(
-      { _id: req.params.videoId },
+      { _id: req.params.reactionId },
       { $pull: { reactions: { reactionId: req.params.reactionId } } },
       { runValidators: true, new: true }
     )
