@@ -3,7 +3,7 @@
 ## Resources 
 [GitHubLink]https://github.com/MJ-Allen/Social-Network-API
 
-[Screencastify-Link]Add LINK
+[Screencastify-Link]https://drive.google.com/file/d/1xQxN42bj-WdJypUN9LmCOKwlClHZXj7a/view
 ## Badges
 ![stayCLEAN](https://img.shields.io/badge/stay-CLEAN-blue)
 
@@ -22,12 +22,18 @@ WHEN I test API POST and DELETE routes in Insomnia
 THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
 ## Table of Contents 
 
+- [Visuals](#visuals)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
 - [License](#license)
 - [Test](#tests)
 
+
+
+
+## Visuals
+![social network image](./images/social-network-screenshot.png)
 ## Installation
  We’ll use Express.js for routing, a MongoDB database, and the Mongoose ODM. In addition to using the Express.js and Mongoose packages, we may also optionally use a JavaScript date library of your choice or the native JavaScript Date object to format timestamps.
 ## Usage
